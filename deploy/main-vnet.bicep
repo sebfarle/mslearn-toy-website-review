@@ -3,16 +3,23 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-01-01' = {
   location: resourceGroup().location
   tags: {
     'CostCenter': '12345'
+    'Owner': 'Team A'
   }
   properties: {
     addressSpace: {
       addressPrefixes: [
-        '10.0.0.0/15'
+        '10.0.0.0/16'
       ]
     }
     enableVmProtection: false
     enableDdosProtection: false
     subnets: [
+      {
+        name: 'subnet001'
+        properties: {
+          addressPrefix: '10.0.0.0/24'
+        }
+      }
       {
         name: 'subnet002'
         properties: {
